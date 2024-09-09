@@ -14,19 +14,22 @@
         <div class="container">
             <div class="row gy-2">
                 <div class="col-12">
+                    <h1 class="text-center mt-3 text-uppercase">To Do List</h1>
                     <ul class="mt-5">
                         <!-- TO DO LIST -->
-                         <li v-for="todo, index in todoList" :key="index" @click="toggleComplete(todo)">
+                         <li class="mt-4" v-for="todo, index in todoList" :key="index" @click="toggleComplete(todo)">
                             <span v-if="todo.done" class="completed">{{ todo.name }}</span>
                             <span v-else>{{ todo.name }}</span>
                             <span v-if="todo.done" class="text-success"> - {{ todo.done }}</span>
                             <span v-else class="text-danger"> - {{ todo.done }}</span>
+                            <button class="ms-5 btn btn-danger" @click="deleteTodo(index)">X</button>
+                            <hr>
                          </li>
                     </ul>
                 </div>
-                <div class="col-12">
+                <div class="col-12 mt-5">
                     <input type="text" name="todo-item" id="todo-item" placeholder="Aggiungi Task" class="form-control form-width" v-model="todo_item">
-                    <button class="btn btn-sm mt-4 btn-primary" @click="addTodo">Aggiungi</button>
+                    <button class="btn mt-4 btn-primary" @click="addTodo">Aggiungi</button>
                 </div>
             </div>
         </div>

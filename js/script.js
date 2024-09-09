@@ -6,6 +6,7 @@ createApp({
             todoList: [],
             url: 'server.php',
             todo_item : '',
+            
         }
     },
     methods: {
@@ -15,16 +16,20 @@ createApp({
             });
         },
         addTodo(){
-            const data  = {
-                todoItem: this.todo_item
-            }
-            axios.post(this.url, data, { headers: { 'Content-Type': 'multipart/form-data'}}).then((resp) => {
+            const newTodo = {
+                name: this.todo_item,
+                done: false
+            };
+            axios.post(this.url, newTodo, { headers: { 'Content-Type': 'multipart/form-data'}}).then((resp) => {
+                this.todoList.push(newTodo);
                 this.todo_item = '';
-                this.todoList = resp.data;
             })
         },
         toggleComplete(todo) {
             todo.done = !todo.done;
+        },
+        deleteTodo(index) {
+            this.todoList.splice(index, 1);
         },
     },
     mounted(){
