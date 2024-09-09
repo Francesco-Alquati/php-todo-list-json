@@ -3,15 +3,25 @@ const { createApp } = Vue;
 createApp({
     data(){
         return{
-            todolist: [],
+            todoList: [],
             url: 'server.php',
+            todo_item : '',
         }
     },
     methods: {
         getTodoList(){
             axios.get(this.url).then((resp) => {
-                console.log(resp.data)
+                this.todoList = resp.data;
             });
+        },
+        addTodo(){
+            const data  = {
+                todoItem: this.todo_item
+            }
+            axios.post(this.url, data, { headers: { 'Content-Type': 'multipart/form-data'}}).then((resp) => {
+                this.todo_item = '';
+                this.todoList = resp.data;
+            })
         }
     },
     mounted(){

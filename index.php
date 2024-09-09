@@ -12,11 +12,21 @@
 <body>
     <div id="app">
         <div class="container">
-            <div class="row">
+            <div class="row gy-2">
                 <div class="col-12">
                     <ul>
                         <!-- TO DO LIST -->
+                         <li v-for="todo, index in todoList" :key="index">
+                            <span v-if="todo.done" class="completed">{{ todo.name }}</span>
+                            <span v-else>{{ todo.name }}</span>
+                            <span v-if="todo.done" class="text-success"> - {{ todo.done }}</span>
+                            <span v-else class="text-danger"> - {{ todo.done }}</span>
+                         </li>
                     </ul>
+                </div>
+                <div class="col-12">
+                    <input type="text" name="todo-item" id="todo-item" placeholder="aggiungi task" class="form-control form-control-sm" v-model="todo_item">
+                    <button class="btn btn-sm btn-primary" @click="addTodo">Aggiungi</button>
                 </div>
             </div>
         </div>
