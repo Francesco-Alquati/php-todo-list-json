@@ -22,7 +22,10 @@ createApp({
                 this.todo_item = '';
                 this.todoList = resp.data;
             })
-        }
+        },
+        toggleComplete(todo) {
+            todo.done = !todo.done;
+        },
     },
     mounted(){
         this.getTodoList();

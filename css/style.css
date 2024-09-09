@@ -6,3 +6,9 @@
 .completed {
     text-decoration: line-through;
 }
+ul{
+    list-style-type: decimal;
+}
+.form-width{
+    width: 500px;
+}
