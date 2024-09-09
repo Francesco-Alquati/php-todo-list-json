@@ -10,7 +10,17 @@
     <title>To do list</title>
 </head>
 <body>
-    
+    <div id="app">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <ul>
+                        <!-- TO DO LIST -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 <script src="./js/script.js" type="text/javascript"></script>
 </body>
 </html>
